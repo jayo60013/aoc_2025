@@ -1,4 +1,4 @@
-package org.example.day1
+package day1
 
 import java.io.File
 

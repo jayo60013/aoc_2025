@@ -1,7 +1,6 @@
 package day1
 
 import org.assertj.core.api.Assertions.assertThat
-import org.example.day1.Day1
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
@@ -18,10 +17,10 @@ class Day1Test {
         val file = "./src/main/resources/day1/$fileName"
 
         // When
-        val actual = Day1().part1(file);
+        val actual = Day1().part1(file)
 
         // Then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(expected)
     }
 
     @ParameterizedTest
@@ -34,9 +33,9 @@ class Day1Test {
         val file = "./src/main/resources/day1/$fileName"
 
         // When
-        val actual = Day1().part2(file);
+        val actual = Day1().part2(file)
 
         // Then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(expected)
     }
 }

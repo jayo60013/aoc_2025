@@ -1,5 +1,4 @@
-package org.example
+package cyou.umbra
 
 fun main() {
-    println(101.toDouble() / 100)
 }
