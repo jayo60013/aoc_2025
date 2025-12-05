@@ -7,22 +7,16 @@ class Day4 {
     fun part1(file: String): Int {
         val grid = parseInput(file)
 
-        var accessiblePaper = 0
-        for (y in 0 until grid.size) {
-            for (x in 0 until grid[y].length) {
-                if (grid[y][x] == '.') continue
-
-                val adjacentPaper = countAdjacentPapers(grid, x, y)
-                if (adjacentPaper < 4) accessiblePaper++
+        return grid.indices.sumOf { y ->
+            grid[y].indices.count { x ->
+                grid[y][x] != '.' && countAdjacentPapers(grid, x, y) < 4
             }
         }
-
-        return accessiblePaper;
     }
 
     fun part2(file: String): Int {
         var grid = parseInput(file).toMutableList()
-        var tmp = grid.toMutableList()
+        val tmp = grid.toMutableList()
 
         var total = 0
         while (true) {
