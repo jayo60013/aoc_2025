@@ -4,28 +4,23 @@ import java.io.File
 
 class Day6 {
 
-    //TODO improve this
     fun part1(file: String): Long {
-        val (numbers, signs) = parseInput(file)
+        val blocks = parseInput(file)
 
-        var total: Long = 0
-        for (x in 0 until numbers[0].size) {
-            val sign = signs[x]
-            var acc: Long = if (sign == "+") 0 else 1
-            for (y in 0 until numbers.size) {
-                if (sign == "+") {
-                    acc += numbers[y][x]
-                } else { // *
-                    acc *= numbers[y][x]
-                }
+        return blocks.sumOf { block ->
+            val lines = block.lines()
+            val sign = lines.last()
+            val nums = lines.dropLast(1).map { it.trim().toLong() }
+
+            when (sign) {
+                "+" -> nums.sum()
+                else -> nums.fold(1L) { acc, v -> acc * v }
             }
-            total += acc
         }
-        return total
     }
 
     fun part2(file: String): Long {
-        val blocks = parseInput2(file)
+        val blocks = parseInput(file)
 
         return blocks.sumOf { block ->
             val lines = block.split("\n")
@@ -46,21 +41,7 @@ class Day6 {
         }
     }
 
-    fun parseInput(file: String): Pair<List<List<Int>>, List<String>> {
-        val fp = "./src/main/resources/day6/$file"
-        val lines = File(fp).readLines()
-        val numberSection = lines.dropLast(1)
-        val signLine = lines.last()
-
-        val numbers = numberSection.map { line ->
-            line.trim().split(Regex("\\s+")).map { it.toInt() }
-        }
-        val sign = signLine.trim().split(Regex("\\s+"))
-
-        return numbers to sign
-    }
-
-    fun parseInput2(file: String): List<String> {
+    fun parseInput(file: String): List<String> {
         val fp = "./src/main/resources/day6/$file"
         val lines = File(fp).readLines()
 
