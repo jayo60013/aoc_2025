@@ -23,7 +23,7 @@ class Day6 {
         val blocks = parseInput(file)
 
         return blocks.sumOf { block ->
-            val lines = block.split("\n")
+            val lines = block.lines()
             val sign = lines.last()
             var acc: Long = if (sign == "+") 0L else 1L
             for (x in lines[0].length - 1 downTo 0) {
@@ -31,10 +31,10 @@ class Day6 {
                 for (y in 0 until lines.size - 1) {
                     n.append(lines[y][x])
                 }
-                if (sign == "+") {
-                    acc += n.toString().trim().toLong()
-                } else { // *
-                    acc *= n.toString().trim().toLong()
+                val num = n.toString().trim().toLong()
+                acc = when (sign) {
+                    "+" -> acc + num
+                    else -> acc * num
                 }
             }
             acc
