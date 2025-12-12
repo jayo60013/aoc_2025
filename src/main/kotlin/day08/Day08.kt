@@ -26,7 +26,7 @@ class Day08 {
             .take(boxesToConnect)
             .drop(1)
             .fold(initialCircuit) { circuits, pd ->
-                updateCircuits(circuits, pd)
+                circuits.updateCircuits(pd)
             }
             .sortedBy { -it.size }
             .take(3)
@@ -40,7 +40,7 @@ class Day08 {
         val initialCircuit = listOf(setOf(pds.first().a, pds.first().b))
         val (_, finalPd) = pds.asSequence()
             .runningFold(initialCircuit) { circuits, pd ->
-                updateCircuits(circuits, pd)
+                circuits.updateCircuits(pd)
             }
             .drop(1)
             .zip(pds.asSequence())
@@ -49,14 +49,14 @@ class Day08 {
         return finalPd.a.x * finalPd.b.x
     }
 
-    fun updateCircuits(circuits: List<Set<Point>>, pd: PointDistance): List<Set<Point>> {
+    fun List<Set<Point>>.updateCircuits(pd: PointDistance): List<Set<Point>> {
         val a = pd.a
         val b = pd.b
 
-        val aIdx = circuits.indexOfFirst { it.contains(a) }
-        val bIdx = circuits.indexOfFirst { it.contains(b) }
+        val aIdx = this.indexOfFirst { it.contains(a) }
+        val bIdx = this.indexOfFirst { it.contains(b) }
 
-        val updatedCircuit = circuits.map { it.toMutableSet() }.toMutableList()
+        val updatedCircuit = this.map { it.toMutableSet() }.toMutableList()
 
         when {
             // Neither are in a circuit -> create a new circuit
@@ -77,7 +77,7 @@ class Day08 {
 
             // both a and b are in a circuit, merge circuits
             (aIdx != bIdx) -> {
-                updatedCircuit[aIdx].addAll(circuits[bIdx])
+                updatedCircuit[aIdx].addAll(this[bIdx])
                 updatedCircuit.removeAt(bIdx)
             }
 
