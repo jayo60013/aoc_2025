@@ -1,4 +1,4 @@
-package day10
+package cyou.umbra
 
 import java.io.File
 import java.util.regex.Pattern
@@ -16,7 +16,7 @@ class Day10 {
                     .any { combo ->
                         isButtonPressTurnOffLights(manual.lights, combo)
                     }
-            } ?: 0
+            } ?: error("No button combination found. manual=$manual")
         }
     }
 

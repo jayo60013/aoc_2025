@@ -1,4 +1,4 @@
-package day05
+package cyou.umbra
 
 import java.io.File
 import kotlin.math.max

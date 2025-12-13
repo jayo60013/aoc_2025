@@ -1,4 +1,4 @@
-package day06
+package cyou.umbra
 
 import java.io.File
 

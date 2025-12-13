@@ -1,19 +1,19 @@
-package day02
-
+import cyou.umbra.Day01
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
-class Day02Test {
+
+class Day01Test {
 
     @ParameterizedTest
     @CsvSource(
-        "sample.txt, 1227775554",
-        "input.txt, 29818212493"
+        "sample.txt, 3",
+        "input.txt, 980"
     )
-    fun test_part1(file: String, expected: Long) {
+    fun test_part1(file: String, expected: Int) {
         // When
-        val actual = Day02().part1(file)
+        val actual = Day01().part1(file)
 
         // Then
         assertThat(actual).isEqualTo(expected)
@@ -21,12 +21,12 @@ class Day02Test {
 
     @ParameterizedTest
     @CsvSource(
-        "sample.txt, 4174379265",
-        "input.txt, 37432260594"
+        "sample.txt, 6",
+        "input.txt, 5961"
     )
-    fun test_part2(file: String, expected: Long) {
+    fun test_part2(file: String, expected: Int) {
         // When
-        val actual = Day02().part2(file)
+        val actual = Day01().part2(file)
 
         // Then
         assertThat(actual).isEqualTo(expected)

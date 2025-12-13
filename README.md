@@ -2,4 +2,4 @@
 
 This year's repository for AoC 2025.
 
-Solutions written in kotlin for this year's (shortened) problems.
+Solutions written in kotlin for this year's problems.

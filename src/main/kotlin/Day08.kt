@@ -1,4 +1,4 @@
-package day08
+package cyou.umbra
 
 import java.io.File
 import kotlin.math.sqrt
@@ -19,9 +19,8 @@ class Day08 {
     fun part1(file: String, boxesToConnect: Int): Int {
         val boxes = parseFile(file)
         val pds = getMinDistances(boxes)
+
         val initialCircuit = listOf(setOf(pds.first().a, pds.first().b))
-
-
         return pds.asSequence()
             .take(boxesToConnect)
             .drop(1)
